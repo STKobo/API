@@ -9,26 +9,23 @@
 <body>
     
     <div id="allentries"></div>
+        Chargement... 
 
+        <script>
 
-    <script>
+ fetch("https://api.publicapis.org/entries", {method: 'GET'})
+      .then(async(responseHTTP) => 
+     { 
+        let resultJSON = await responseHTTP.json();
+		let entriesDiv = document.getElementById("allentries");
+        entriesDiv.innerHTML = resultJSON.count + '<bR/>' + '<bR/>';
 
- var requestOptions = {
-  method: 'GET',
-  redirect: 'follow'
-};
+        resultJSON.entries.forEach(element => {
+	    entriesDiv.innerHTML += element.API + '<bR/>';
+        });
+    });
 
-fetch("https://api.publicapis.org/entries", requestOptions)
-  .then(response => response.json())
-  .then(result => 
-  { 
-    let entriesDiv = document.getElementById("allentries");
-    entriesDiv.innerHTML = result.count;
-    console.log(result)
-  })
-  .catch(error => console.log('error', error));
-
-    </script>
+        </script>
 
 
 </body>
