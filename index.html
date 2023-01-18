@@ -8,24 +8,10 @@
 </head>
 <body>
     
-    <div id="allentries"></div>
-        Chargement... 
+    <div id="allentries">Chargement... </div>
+        
 
-        <script>
-
- fetch("https://api.publicapis.org/entries", {method: 'GET'})
-      .then(async(responseHTTP) => 
-     { 
-        let resultJSON = await responseHTTP.json();
-		let entriesDiv = document.getElementById("allentries");
-        entriesDiv.innerHTML = resultJSON.count + '<bR/>' + '<bR/>';
-
-        resultJSON.entries.forEach(element => {
-	    entriesDiv.innerHTML += element.API + '<bR/>';
-        });
-    });
-
-        </script>
+    <script src="script.js"></script>
 
 
 </body>
