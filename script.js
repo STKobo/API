@@ -20,8 +20,10 @@ document.getElementById("getUSers").addEventListener("click", function(){
 
 function getAllUsers(){
 
+    let numPage = document.getElementById("pageNum").value;    
     fetch(BaseUrlUser+ '?' + new URLSearchParams({
-            per_page: 3 
+            per_page: 3,
+            page: +numPage
         }).toString()
         , {method :'GET'})
     .then(function(response){
