@@ -63,6 +63,8 @@ function createUser(){
         return response.json();
     })
     .then(function(responseJson){
-        alert("L'utilisateur n°" + responseJson.id + " a bien été créé/ Nom : " + responseJson.name + " Job : " + responseJson.job);
+        let dateCreation = new Date(responseJson.createdAt);
+        alert("L'utilisateur n°" + responseJson.id + " a bien été créé à " 
+        + dateCreation.toLocaleTimeString() +  " Nom : " + responseJson.name + " Job : " + responseJson.job);
     })
 }
