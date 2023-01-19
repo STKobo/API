@@ -12,16 +12,25 @@
 */
 
 const allEntriesDiv = document.getElementById("allentries");
+document.getElementById("getUSers").addEventListener("click", function(){
+    getAllUsers();
+})
 
-fetch("https://reqres.in/api/users") 
-.then(function(response){
-    //cette réponse est en texte 
-    // traduire la réponse
-    return response.json();
-})
-.then(function(responseJson){
-    //je peux utiliser ma data en objet 
-    responseJson.data.forEach(element => {
-        allEntriesDiv.innerHTML += element.email + "<br>";
-    });
-})
+function getAllUsers(){
+
+    fetch("https://reqres.in/api/users") 
+    .then(function(response){
+        //cette réponse est en texte 
+        // traduire la réponse
+        return response.json();
+    })
+    .then(function(responseJson){
+        //je peux utiliser ma data en objet 
+        responseJson.data.forEach(element => {
+            allEntriesDiv.innerHTML += element.email + "<br>";
+        });
+    })
+
+}
+
+
