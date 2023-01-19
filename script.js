@@ -12,24 +12,32 @@
 */
 
 const allEntriesDiv = document.getElementById("allentries");
+const basURL = 'https://reqres.in/';
+const BaseUrlUser = basURL+"api/users";
 document.getElementById("getUSers").addEventListener("click", function(){
     getAllUsers();
 })
 
 function getAllUsers(){
 
-    fetch("https://reqres.in/api/users") 
+    fetch(BaseUrlUser+ '?' + new URLSearchParams({
+            per_page: 3 
+        }).toString()
+        , {method :'GET'})
     .then(function(response){
         //cette réponse est en texte 
         // traduire la réponse
         return response.json();
     })
     .then(function(responseJson){
-        //je peux utiliser ma data en objet 
-        responseJson.data.forEach(element => {
-            allEntriesDiv.innerHTML += element.email + "<br>";
+        allEntriesDiv.innerHTML = ' ';
+        
+        let allUserArray = responseJson.data;
+
+        allUserArray.forEach(user => {
+            allEntriesDiv.innerHTML += user.email + "<br>";
         });
-    })
+    });
 
 }
 
