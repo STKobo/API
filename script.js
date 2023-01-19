@@ -44,3 +44,21 @@ function getAllUsers(){
 }
 
 
+function createUser(){
+    fetch(BaseUrlUser, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+                "name": "Yellow",
+                "Job": "Developer"
+            }) 
+    })
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(responseJson){
+        //...
+    })
+}
