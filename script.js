@@ -45,20 +45,24 @@ function getAllUsers(){
 
 
 function createUser(){
+
+
+    let name = document.getElementById("nomInput").value;
+    let job = document.getElementById("jobInput").value;
     fetch(BaseUrlUser, {
         method: 'POST',
         headers: {
             'Content-type': 'application/json'
         },
         body: JSON.stringify({
-                "name": "Yellow",
-                "Job": "Developer"
+                "name": name,
+                "job": job
             }) 
     })
     .then(function(response){
         return response.json();
     })
     .then(function(responseJson){
-        //...
+        alert("L'utilisateur n°" + responseJson.id + " a bien été créé/ Nom : " + responseJson.name + " Job : " + responseJson.job);
     })
 }
